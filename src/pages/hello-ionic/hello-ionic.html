@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<form padding (submit)="addTask()" #f= "ngForm">
+  <ion-list>
+    <ion-item>
+        <ion-label floating>ラベル</ion-label>
+        <ion-input type="text" [(ngModel)]="task" name="task" required
+                  minlength="3" maxlength="20"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button type="submit" ion-button block [disabled]="!f.form.valid">追加</button>
+</form>
+
+<ion-list>
+  <ion-item *ngFor="let t of tasks">{{t.name}}</ion-item>
+</ion-list>
+</ion-content>
+
